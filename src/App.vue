@@ -1,6 +1,15 @@
 <template>
   <!-- List Rendering -->
+   <!-- Array of objects -->
+   <h2 v-for="firstName in fullNames" :key="firstName">{{ firstName.firstname }} {{ firstName.lastname }}</h2>
+   <!-- Array of strings -->
    <h2 v-for="(fname,index) in names" :key="fname">{{index}} {{ fname }}</h2>
+   <!-- Array of abject array -->
+ <div v-for="actor in actors" :key="actor.actorname">
+  <h2>{{ actor.actorname }}</h2>
+  <h2 v-for="movie in actor.movies" :key="movie">{{ movie }}</h2>
+
+ </div>
 
   <!-- Displays or hides element -->
   <div v-show="showElement">v-show</div>
@@ -55,7 +64,22 @@ export default {
       isSoldout:true,
       display:false,
       showElement:false,
-      names:["Bruce","Isaac","John"]
+      names:["Bruce","Isaac","John"],
+      fullNames:[
+        {firstname: "John",lastname:"Mike"},
+        {firstname:"Agnes", lastname:"Kuria"},
+        {firstname:"James",lastname:"kweyu"}
+      ],
+      actors:[
+        {
+          actorname:"neema Mbosso",
+          movies:["Becky","Iron feast"]
+        },
+        {
+          actorname:"Jayden Akimton",
+          movies:["Maria","Sultana","Auras Quest"]
+        }
+      ]
       
     }
   },
