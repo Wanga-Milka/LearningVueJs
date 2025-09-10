@@ -1,6 +1,6 @@
 <template>
   <!-- List Rendering -->
-   <h2 v-for="fname in names" :key="fname">{{ fname }}</h2>
+   <h2 v-for="(fname,index) in names" :key="fname">{{index}} {{ fname }}</h2>
 
   <!-- Displays or hides element -->
   <div v-show="showElement">v-show</div>
