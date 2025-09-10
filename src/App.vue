@@ -1,4 +1,14 @@
 <template>
+  <!-- Use template instaed of div to avoid issues with html and css -->
+  <template v-if="display">
+    <h2>Codevolution</h2>
+    <h2>VueJs</h2>
+    <h2>Training</h2>
+  </template>
+  <div v-if="num===0">The number is zero</div>
+  <div v-else-if="num<0">The number is negative</div>
+  <div v-else-if="num>0">The number is positive</div>
+  <div v-else>Not a number</div>
   <!-- binding text using interpolatiion -->
  <div> {{ greet }} {{ name }}</div>
  <!-- binding text using directive -->
@@ -11,7 +21,11 @@
  <div v-bind:class="status" class="underline">status</div>
  <!-- if isPromoted is true apply class promoted -->
  <div v-bind:class="isPromoted && 'promoted' ">Front-end development</div>
+ <div v-bind:class="isSoldout ? 'soldout' : 'new' ">Sandles</div>
+ <h2 v-bind:class="['promoted','new']">Newly applied Movie</h2>
+ <h2 v-bind:class="[isPromoted && 'promoted' , isSoldout ? 'soldout': 'new']"> Latest Movie</h2>
 </template>
+
 
 <script>
 
@@ -21,6 +35,7 @@ export default {
   data()
   {
     return {
+    num:'Male',
       greet:"Good Morning",
       name: "Vishwas",    
       channel: "Codevolution",
@@ -29,7 +44,9 @@ export default {
       headingId:"heading",
       isDisabled:false,
       status:'success',
-      isPromoted:true
+      isPromoted:true,
+      isSoldout:true,
+      display:false
       
     }
   },
@@ -50,6 +67,12 @@ export default {
 }
 .promoted{
 font-style: italic;
+}
+.soldout{
+  color: red;
+}
+.new{
+  color: green;
 }
 
 </style>
