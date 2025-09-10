@@ -1,4 +1,7 @@
 <template>
+  <!-- List Rendering -->
+   <h2 v-for="fname in names" :key="fname">{{ fname }}</h2>
+
   <!-- Displays or hides element -->
   <div v-show="showElement">v-show</div>
   <!--  v-if Unmounts element from the dom if condition is false -->
@@ -51,7 +54,8 @@ export default {
       isPromoted:true,
       isSoldout:true,
       display:false,
-      showElement:false
+      showElement:false,
+      names:["Bruce","Isaac","John"]
       
     }
   },
