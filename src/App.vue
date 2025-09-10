@@ -1,12 +1,12 @@
 <template>
   {{ count }}
-  <button v-on:click="increment(1)">Increment 1</button>
-   <button v-on:click="increment(5)">Increment 5</button>
-   <button v-on:click="decrement(1)">Decrement 1</button>
-    <button @click="decrement(5)">Decrement 5</button>
+  <button v-on:click="increment(1, $event)">Increment 1</button>
+   <button v-on:click="increment(5, $event)">Increment 5</button>
+   <button v-on:click="decrement(1, $event)">Decrement 1</button>
+    <button @click="decrement(5, $event)">Decrement 5</button>
    
   <!-- Methods -->
-   <h2>using base multiply->{{ multiply(3) }}</h2>
+   <h2>using base multiply->{{ multiply(3) }}</h2> 
    <h2>Add Method->{{ add(5,3,8) }}</h2>
   <!-- List Rendering -->
    <!-- list object -->
@@ -37,7 +37,7 @@
   <div v-else>Not a number</div>
   <!-- binding text using interpolatiion -->
  <div> {{ greet }} {{ name }}</div>
- <button v-on:click="name='Batman'">change name</button>
+ <button v-on:click="changeName">change name</button>
 
  <button v-on:mouseover="name='Batman'">change name</button>
  <hr>
@@ -114,13 +114,25 @@ export default {
      {
      return num * this.baseMultiplier;
     },
-    increment(num)
+    increment(num,event)
     {
-      return this.count+= num
+      this.count+= num
+      console.log("Event",event);
+      
     },
-    decrement(num)
+    decrement(num,event)
     {
-      return this.count-=num
+       this.count-=num
+       console.log("Event",event);
+       
+    },
+    changeName(event)
+    {
+      
+        this.name='Batman'
+        console.log('Event',event);
+        
+      
     }
   },
 
