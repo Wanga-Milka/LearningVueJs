@@ -1,5 +1,10 @@
 <template>
+  <!-- Methods -->
+   <h2>using base multiply->{{ multiply(3) }}</h2>
+   <h2>Add Method->{{ add(5,3,8) }}</h2>
   <!-- List Rendering -->
+   <!-- list object -->
+   <h2 v-for="(value,key,index) in objectDetails" :key="value">{{ index }} {{ key }} {{ value }}</h2>
    <!-- Array of objects -->
    <h2 v-for="firstName in fullNames" :key="firstName">{{ firstName.firstname }} {{ firstName.lastname }}</h2>
    <!-- Array of strings -->
@@ -8,7 +13,6 @@
  <div v-for="actor in actors" :key="actor.actorname">
   <h2>{{ actor.actorname }}</h2>
   <h2 v-for="movie in actor.movies" :key="movie">{{ movie }}</h2>
-
  </div>
 
   <!-- Displays or hides element -->
@@ -27,6 +31,7 @@
   <div v-else>Not a number</div>
   <!-- binding text using interpolatiion -->
  <div> {{ greet }} {{ name }}</div>
+ <hr>
  <!-- binding text using directive -->
  <div v-text="channel"></div>
  <div v-html="prac"></div>
@@ -64,6 +69,7 @@ export default {
       isSoldout:true,
       display:false,
       showElement:false,
+      baseMultiplier:5,
       names:["Bruce","Isaac","John"],
       fullNames:[
         {firstname: "John",lastname:"Mike"},
@@ -79,10 +85,28 @@ export default {
           actorname:"Jayden Akimton",
           movies:["Maria","Sultana","Auras Quest"]
         }
-      ]
+      ],
+      objectDetails:{
+        studentname:"Mark",
+        admission:"2019",
+        class:"F2Q"
+      }
       
     }
   },
+    
+  methods:{
+    add(a,b,c)
+    {
+      return(a+b+c)
+    },
+     multiply(num)
+     {
+     return num * this.baseMultiplier;
+    }
+  },
+
+ 
 };
 </script>
 
