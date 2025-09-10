@@ -1,4 +1,8 @@
 <template>
+  <!-- Displays or hides element -->
+  <div v-show="showElement">v-show</div>
+  <!--  v-if Unmounts element from the dom if condition is false -->
+  <div v-if="showElement">v-if</div>
   <!-- Use template instaed of div to avoid issues with html and css -->
   <template v-if="display">
     <h2>Codevolution</h2>
@@ -46,7 +50,8 @@ export default {
       status:'success',
       isPromoted:true,
       isSoldout:true,
-      display:false
+      display:false,
+      showElement:false
       
     }
   },
