@@ -1,4 +1,10 @@
 <template>
+  {{ count }}
+  <button v-on:click="increment(1)">Increment 1</button>
+   <button v-on:click="increment(5)">Increment 5</button>
+   <button v-on:click="decrement(1)">Decrement 1</button>
+    <button @click="decrement(5)">Decrement 5</button>
+   
   <!-- Methods -->
    <h2>using base multiply->{{ multiply(3) }}</h2>
    <h2>Add Method->{{ add(5,3,8) }}</h2>
@@ -31,6 +37,9 @@
   <div v-else>Not a number</div>
   <!-- binding text using interpolatiion -->
  <div> {{ greet }} {{ name }}</div>
+ <button v-on:click="name='Batman'">change name</button>
+
+ <button v-on:mouseover="name='Batman'">change name</button>
  <hr>
  <!-- binding text using directive -->
  <div v-text="channel"></div>
@@ -56,6 +65,7 @@ export default {
   data()
   {
     return {
+      count:0,
     num:'Male',
       greet:"Good Morning",
       name: "Vishwas",    
@@ -103,6 +113,14 @@ export default {
      multiply(num)
      {
      return num * this.baseMultiplier;
+    },
+    increment(num)
+    {
+      return this.count+= num
+    },
+    decrement(num)
+    {
+      return this.count-=num
     }
   },
 
